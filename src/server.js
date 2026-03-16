@@ -9,6 +9,12 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+const logger = pinoHttp({
+  transport: {
+    target: 'pino-pretty',
+  },
+});
+
 app.use(cors());
 app.use(express.json());
 app.use(pinoHttp());
