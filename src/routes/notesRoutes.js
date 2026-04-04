@@ -2,11 +2,11 @@ import express from 'express';
 import { celebrate } from 'celebrate';
 
 import {
-  getAllNotesController,
-  getNoteByIdController,
-  createNoteController,
-  patchNoteController,
-  deleteNoteController,
+  getAllNotes,
+  getNoteById,
+  createNote,
+  updateNote,
+  deleteNote,
 } from '../controllers/notesController.js';
 
 import {
@@ -18,14 +18,14 @@ import {
 
 const router = express.Router();
 
-router.get('/', celebrate(getAllNotesSchema), getAllNotesController);
+router.get('/', celebrate(getAllNotesSchema), getAllNotes);
 
-router.get('/:noteId', celebrate(noteIdSchema), getNoteByIdController);
+router.get('/:noteId', celebrate(noteIdSchema), getNoteById);
 
-router.post('/', celebrate(createNoteSchema), createNoteController);
+router.post('/', celebrate(createNoteSchema), createNote);
 
-router.patch('/:noteId', celebrate(updateNoteSchema), patchNoteController);
+router.patch('/:noteId', celebrate(updateNoteSchema), updateNote);
 
-router.delete('/:noteId', celebrate(noteIdSchema), deleteNoteController);
+router.delete('/:noteId', celebrate(noteIdSchema), deleteNote);
 
 export default router;
