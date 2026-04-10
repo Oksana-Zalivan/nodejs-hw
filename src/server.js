@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 
 import notesRouter from './routes/notesRoutes.js';
 import authRouter from './routes/authRoutes.js';
+import userRouter from './routes/userRoutes.js';
 
 import { connectMongoDB } from './db/connectMongoDB.js';
 import { logger } from './middleware/logger.js';
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use(logger);
 
 app.use('/auth', authRouter);
+app.use('/users', userRouter);
 
 app.use(notesRouter);
 
